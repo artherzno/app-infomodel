@@ -1,0 +1,45 @@
+[
+    {
+        "id": 1,
+        "type": "Ninja" ,
+        "listmodel" :[
+            {
+                "modelid": "nj-1",
+                "model": "Ninja 400"
+            },{
+                "modelid":  "nj-2",
+                "model": "Ninja 650"
+            },{
+                "modelid":  "nj-3",
+                "model": "Ninja 1000SX"
+            },{
+                "modelid":  "nj-4",
+                "model": "Ninja H2SXSE"
+            },{
+                "modelid":  "nj-5",
+                "model": "Ninja H2SXSE Plus"
+            },{
+                "modelid":  "nj-6",
+                "model": "Ninja ZX-6R"
+            },{
+                "modelid":  "nj-7",
+                "model": "Ninja ZX-10R"
+            }
+        ]
+    },{
+        "id": 2,
+        "type": "Z",
+        "listmodel" :[
+            {
+                "modelid": "z-1",
+                "model": "Ninja 400"
+            },{
+                "modelid":  "z-2",
+                "model": "Ninja 650"
+            },{
+                "modelid":  "z-3",
+                "model": "Ninja 1000SX"
+            }
+        ]
+    }
+]
