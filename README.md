@@ -1,2 +1,2 @@
-# app-info-model
+# app-infomodel
 This is application for info model.
