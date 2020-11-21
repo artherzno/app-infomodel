@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, TouchableHighlight} from 'react-native';
+import { Button, View, Text, TouchableHighlight, StyleSheet} from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -7,17 +7,24 @@ function NavModel() {
   
   const navigation = useNavigation();
 
-  const button = {
-    padding: 20,
-    backgroundColor: '#00aa00'
-  };
+  const styles = StyleSheet.create({
+    button: {
+      padding: 20,
+      backgroundColor: '#00aa00'
+    },
+  
+    navbar: {
+      position: 'absolute',
+      bottom: 20,
+    }
+  });
   
   return (
-    <View>
-      <TouchableHighlight style={button} onPress={()=>navigation.navigate('Home')}>
+    <View style={styles.navbar}>
+      <TouchableHighlight style={styles.button} onPress={()=>navigation.navigate('Home')}>
         <Text>Home</Text>
       </TouchableHighlight>
-      <TouchableHighlight style={button} onPress={()=>navigation.navigate('Overview')}>
+      <TouchableHighlight style={styles.button} onPress={()=>navigation.navigate('Overview')}>
         <Text>Overview</Text>
       </TouchableHighlight>
     </View>
