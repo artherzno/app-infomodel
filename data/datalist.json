@@ -74,13 +74,16 @@
         "listmodel" :[
             {
                 "modelid": "z-1",
-                "model": "Ninja 400"
+                "model": "Z 250",
+                "name": "z250"
             },{
                 "modelid":  "z-2",
-                "model": "Ninja 650"
+                "model": "Z 400",
+                "name": "z400"
             },{
                 "modelid":  "z-3",
-                "model": "Ninja 1000SX"
+                "model": "Z 650",
+                "name": "z650"
             }
         ]
     }

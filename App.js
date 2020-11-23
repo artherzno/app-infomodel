@@ -1,33 +1,34 @@
 import * as React from 'react';
-import { Button, View, Text, TouchableHighlight, StyleSheet} from 'react-native';
+import { Button, View, Text, TouchableHighlight, StyleSheet, FlatList} from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as data from './data/datalist.json';
-const dataList = data[0];
+const dataList = data.default;
 console.log(dataList); // o
 
-function NavModel() {
+const styles = StyleSheet.create({
+  button: {
+    padding: 20,
+    backgroundColor: '#00aa00',
+    width: 180,
+    height: 50,
+    textAlign: 'center',
+  },
+
+  navbar: {
+    position: 'absolute',
+    bottom: 20,
+    flexDirection: 'row',
+    flex: 1, 
+  }
+});
+
+const colorUnderlay = "#007700";
+
+function Nav() {
   
   const navigation = useNavigation();
 
-  const styles = StyleSheet.create({
-    button: {
-      padding: 20,
-      backgroundColor: '#00aa00',
-      width: 180,
-      height: 50,
-      textAlign: 'center',
-    },
-  
-    navbar: {
-      position: 'absolute',
-      bottom: 20,
-      flexDirection: 'row',
-      flex: 1, 
-    }
-  });
-
-  const colorUnderlay = "#007700";
   
   return (
     <View style={styles.navbar}>
@@ -43,21 +44,38 @@ function NavModel() {
   );
 }
 
+const listModel = ({item})=>(
+  <View>
+    <Text style={{color: '#000'}}>{item.type}</Text>
+    <FlatList data={item.listmodel} renderItem={listModelBtn} />
+  </View>
+);
+
+const listModelBtn = ({item}) => (
+  <TouchableHighlight underlayColor={colorUnderlay} style={styles.button}>
+        <Text>{item.name}</Text>
+  </TouchableHighlight>
+);
+
+
 function HomeScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button onPress={()=>navigation.navigate('Overview')} title="Let' Go" />
+      <FlatList data={dataList} renderItem={listModel} keyExtractor={item => item.id.toString()} />
     </View>
   );
 }
 
 function OverviewScreen() {
+  const { name } = route.params;
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Overview</Text>
-      <NavModel />
+      <Text>Overview {name}</Text>
+      <Nav />
     </View>
   );
 }
@@ -66,7 +84,7 @@ function TopFeature() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>TopFeature</Text>
-      <NavModel />
+      <Nav />
     </View>
   );
 }
