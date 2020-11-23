@@ -1,63 +1,91 @@
-import React, { Component } from 'react';
-import { View, Text, FlatList, SafeAreaView, StyleSheet, Button, TouchableOpacity} from 'react-native';
+import * as React from 'react';
+import { Button, View, Text, TouchableHighlight, StyleSheet} from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import * as data from './data/datalist.json';
+const dataList = data[0];
+console.log(dataList); // o
 
-import modelList from './data/datalist.json';
+function NavModel() {
+  
+  const navigation = useNavigation();
 
-export default function App() {
-  const itemModel = ({item})=>(
-    <View>
-      <Text style={styles.p}>{item.model}</Text>
+  const styles = StyleSheet.create({
+    button: {
+      padding: 20,
+      backgroundColor: '#00aa00',
+      width: 180,
+      height: 50,
+      textAlign: 'center',
+    },
+  
+    navbar: {
+      position: 'absolute',
+      bottom: 20,
+      flexDirection: 'row',
+      flex: 1, 
+    }
+  });
+
+  const colorUnderlay = "#007700";
+  
+  return (
+    <View style={styles.navbar}>
+      <TouchableHighlight underlayColor={colorUnderlay} style={styles.button} onPress={()=>navigation.navigate('Overview')}>
+        <Text>Overview</Text>
+      </TouchableHighlight>
+      <TouchableHighlight underlayColor={colorUnderlay} style={styles.button} onPress={()=>navigation.navigate('TopFeature')}>
+        <Text>TopFeature</Text>
+      </TouchableHighlight>
     </View>
-  );
-
-  const groupModel = ({item})=>(
-    <View style={styles.table}>
-      <Text style={styles.p}>{item.type}</Text>
-      <FlatList 
-        data={item.listmodel}
-        renderItem={itemModel}
-        keyExtractor={item=> item.id}
-      />
-    </View>
+    
 
   );
+}
+
+function HomeScreen({ navigation }) {
 
   return (
-    <SafeAreaView style={ styles.container }> 
-      <Text style={ styles.h1 }>
-        Kawasaki Info Model
-      </Text>
-      <FlatList 
-        data={modelList} 
-        renderItem={groupModel} 
-        keyExtractor={item=>item.id}
-        horizontal={true}
-      />
-    </SafeAreaView>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button onPress={()=>navigation.navigate('Overview')} title="Let' Go" />
+    </View>
   );
-  }
+}
 
-const colorGreen = 'green';
-const colorWhite = 'white';
+function OverviewScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Overview</Text>
+      <NavModel />
+    </View>
+  );
+}
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#000',
-    flex: 1,
-    alignItems: 'center',
-  },
-  h1: {
-    color: colorGreen,
-    fontSize: 40,
-  },
-  p: {
-    color: '#fff',
-    fontSize: 16,
-  },
-  table: {
-    padding: 10,
-    backgroundColor: '#0a0a0a',
-    borderWidth: 1,
-    borderColor: colorGreen,
-  }
-});
+function TopFeature() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>TopFeature</Text>
+      <NavModel />
+    </View>
+  );
+}
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{
+          headerShown: false
+        }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Overview" component={OverviewScreen} />
+        <Stack.Screen name="TopFeature" component={TopFeature} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;

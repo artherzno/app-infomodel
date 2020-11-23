@@ -5,25 +5,67 @@
         "listmodel" :[
             {
                 "modelid": "nj-1",
-                "model": "Ninja 400"
+                "model": "Ninja 400",
+                "name": "ninja400",
+                "content": [
+                    {
+                        "overview": {
+                            "title": "Overview Title",
+                            "detail": "Overview Detail",
+                            "img": "Overview Img"
+                        }
+                    },{
+                        "topfeature": [
+                            {
+                                "title": "Topfeature Title 1",
+                                "detail": "Topfeature Detail 1",
+                                "img": "Topfeature Img 1"
+                            },{
+                                "title": "Topfeature Title 2",
+                                "detail": "Topfeature Detail 2",
+                                "img": "Topfeature Img 2"
+                            }
+                        ]
+                    },{
+                        "specification": "spec data"
+                    },{
+                        "color": "color data"
+                    },{
+                        "accessories": "accessories data"
+                    },{
+                        "gallery": [
+                            {
+                                "img-1": "img-1.jpg"
+                            },{
+                                "img-2": "img-2.jpg"
+                            }
+                        ]                    
+                    }
+                ]
             },{
                 "modelid":  "nj-2",
-                "model": "Ninja 650"
+                "model": "Ninja 650",
+                "name": "ninja650"
             },{
                 "modelid":  "nj-3",
-                "model": "Ninja 1000SX"
+                "model": "Ninja 1000SX",
+                "name": "ninja1000sx"
             },{
                 "modelid":  "nj-4",
-                "model": "Ninja H2SXSE"
+                "model": "Ninja H2SXSE",
+                "name": "ninjah2sxse"
             },{
                 "modelid":  "nj-5",
-                "model": "Ninja H2SXSE Plus"
+                "model": "Ninja H2SXSE Plus",
+                "name": "ninjah2sxseplus"
             },{
                 "modelid":  "nj-6",
-                "model": "Ninja ZX-6R"
+                "model": "Ninja ZX-6R",
+                "name": "ninjazx6r"
             },{
                 "modelid":  "nj-7",
-                "model": "Ninja ZX-10R"
+                "model": "Ninja ZX-10R",
+                "name": "ninjazx10r"
             }
         ]
     },{
